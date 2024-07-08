@@ -1,0 +1,91 @@
+@use '../mixins/responsive.scss' as *;
+
+.checkbox-task {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--light-grey);
+  appearance: none;
+  cursor: pointer;
+
+  @include responsive(laptop) {
+    top: 19px;
+    left: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.input-text-task {
+  width: 20.4375rem;
+  height: 3rem;
+  border: none;
+  border-radius: 0.3125rem;
+  padding-left: 3.375rem;
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+  font-size: 0.75rem;
+  letter-spacing: -0.0104rem;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+
+  @include responsive(laptop) {
+    width: 33.75rem;
+    height: 64px;
+    padding-left: 70px;
+    font-size: 1.125rem;
+    letter-spacing: -0.0156rem;
+  }
+}
+
+.tasks-list {
+  background-color: var(--white-color);
+  color: var(--dark-blue);
+}
+
+.tasks-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  background-color: var(--white-color);
+  color: var(--grey-color);
+  border-radius: 0 0 0.3125rem 0.3125rem;
+  font-size: 0.75rem;
+  letter-spacing: -0.167px;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+
+  @include responsive(laptop) {
+    font-size: 0.875rem;
+    letter-spacing: -0.194px;
+  }
+}
+
+.clear-completed {
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  background-color: var(--white-color);
+  border-radius: 5px;
+  padding-block: 15px 19px;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+}
+
+.filter {
+  border: none;
+  background-color: transparent;
+  color: var(--grey-color);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.194px;
+  cursor: pointer;
+
+  &--active {
+    color: var(--active-color);
+  }
+}

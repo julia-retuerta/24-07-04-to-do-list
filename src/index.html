@@ -5,10 +5,47 @@
     <!-- PON UN FAVICON!!! -->
     <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CAMBIA EL TITLE!!! -->
-    <title>Vite Template</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>To do list</title>
   </head>
+
   <body>
+    <header class="header">
+      <div class="header__content">
+        <h1 class="header__title">TODO</h1>
+        <img id="switch" class="switch" src="./assets/images/icon-moon.svg" alt="Switch theme" />
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="to-do-container">
+        <form id="form" class="form">
+          <input type="checkbox" name="checkbox-task" id="checkbox-task" class="checkbox-task" />
+          <input type="text" name="task" id="input-text-task" class="input-text-task" placeholder="Create a new todo..." />
+        </form>
+
+        <ul id="tasks-list" class="tasks-list"></ul>
+
+        <div class="tasks-footer">
+          <span id="items-left">5 items left</span>
+          <span id="clear-completed" class="clear-completed">Clear Completed</span>
+        </div>
+
+        <div id="filters" class="filters">
+          <button data-filter="all" class="filter filter--active">All</button>
+          <button data-filter="active" class="filter">Active</button>
+          <button data-filter="completed" class="filter">Completed</button>
+        </div>
+      </div>
+    </main>
+
     <script type="module" src="./js/index.js"></script>
   </body>
 </html>

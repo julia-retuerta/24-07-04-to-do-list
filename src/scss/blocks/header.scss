@@ -1,0 +1,37 @@
+@use '../mixins/responsive.scss' as *;
+
+.header {
+  background: url(../../assets/images/bg-mobile-light.jpg) no-repeat;
+  background-size: cover;
+  height: 200px;
+  padding: 3rem 1.5rem;
+  margin-inline: auto;
+  color: var(--white-color);
+
+  @include responsive(laptop) {
+    background: url(../../assets/images/bg-desktop-light.jpg) no-repeat;
+    background-size: cover;
+    height: 300px;
+    padding: 70px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 325px;
+    margin-inline: auto;
+
+    @include responsive(laptop) {
+      width: 541px;
+    }
+  }
+
+  &__title {
+    letter-spacing: 12px;
+
+    @include responsive(laptop) {
+      font-size: 50px;
+    }
+  }
+}

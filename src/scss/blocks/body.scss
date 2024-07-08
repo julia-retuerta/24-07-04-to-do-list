@@ -1,7 +1,8 @@
 html {
   scroll-behavior: smooth;
 }
+
 body {
-  background-color: #111;
-  font-family: sans-serif;
+  background-color: var(--bg-color-light);
+  font-family: "Josefin Sans", sans-serif;
 }

@@ -1,1 +1,12 @@
+@use '../mixins/responsive.scss' as *;
 
+.main {
+  position: absolute;
+  top: 135px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include responsive(laptop) {
+    top: 195px;
+  }
+}
