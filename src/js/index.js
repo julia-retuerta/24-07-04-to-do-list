@@ -34,10 +34,12 @@ const countItemsLeft = () => {
   }
 };
 
-const insertTasks = () => {
+// Esta función recibe un array de tareas (tasksToRender) y las renderiza en el DOM. Por defecto, usa allTasks si no se pasa otro array.
+const insertTasks = (tasksToRender = allTasks) => {
   const fragment = document.createDocumentFragment();
 
-  allTasks.forEach(task => {
+  // Código para crear y añadir tareas a fragment
+  tasksToRender.forEach(task => {
     const newDiv = document.createElement('div');
     newDiv.classList.add('task-container');
 
@@ -64,11 +66,15 @@ const insertTasks = () => {
     fragment.append(newDiv);
   });
 
+  // Vacía el contenedor de tareas
   tasksElement.textContent = '';
+  // Añade el fragmento
   tasksElement.append(fragment);
+  // Actualiza el contador de tareas restantes
   countItemsLeft();
 };
 
+// Función para añadir una nueva tarea al array allTasks y llamar a insertTasks para actualizar la lista de tareas renderizadas
 const saveTask = task => {
   allTasks.push(task);
   insertTasks();
@@ -81,6 +87,7 @@ const createTask = task => {
     completed: false
   };
 
+  // Llamar a saveTask para guardar y renderizar la tarea.
   saveTask(newTask);
 };
 
@@ -100,19 +107,42 @@ const completeTask = id => {
   insertTasks();
 };
 
+// Elimina todas las tareas completadas del array allTasks
 const deleteAllCompletedTasks = () => {
   allTasks = allTasks.filter(task => !task.completed);
   insertTasks();
 };
 
-const useFilters = () => {
-  insertTasks();
+// Devuelve un array de tareas filtrado
+const getFilteredTasks = filter => {
+  let filteredTasks = allTasks;
+  if (filter === 'active') {
+    filteredTasks = allTasks.filter(task => !task.completed);
+  } else if (filter === 'completed') {
+    filteredTasks = allTasks.filter(task => task.completed);
+  }
+
+  return filteredTasks;
 };
 
-filtersElement.addEventListener('click');
+// Parte visual de los filtros, para manejar el evento de clic en los botones de filtro
+// Verifica si el botón tiene un filtro (dataset.filter)
+// Elimina la clase activa de todos los botones de filtro
+// Añade la clase activa al botón clicado
+// Llama a getFilteredTasks con el filtro seleccionado y actualiza la lista renderizada con las tareas filtradas.
+const filterTasks = event => {
+  if (!event.target.dataset.filter) return;
+  allFilters.forEach(filter => filter.classList.remove('filter--active'));
+  event.target.classList.add('filter--active');
+  const filteredTasks = getFilteredTasks(event.target.dataset.filter);
+  insertTasks(filteredTasks);
+};
 
+// Llamada inicial que renderiza todas las tareas cuando se carga la página.
 insertTasks();
 
+// Verifica que el campo de entrada no esté vacío
+// Crea una nueva tarea con el valor del campo de entrada
 formElement.addEventListener('submit', event => {
   event.preventDefault();
   if (!event.target.task.value) return;
@@ -121,6 +151,8 @@ formElement.addEventListener('submit', event => {
 });
 
 deleteCompleteElement.addEventListener('click', deleteAllCompletedTasks);
+
+filtersElement.addEventListener('click', filterTasks);
 
 /////////////////////////
 
