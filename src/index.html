@@ -27,15 +27,15 @@
     <main class="main">
       <div class="to-do-container">
         <form id="form" class="form">
-          <input type="checkbox" name="checkbox-task" id="checkbox-task" class="checkbox-task" />
-          <input type="text" name="task" id="input-text-task" class="input-text-task" placeholder="Create a new todo..." />
+          <label for="input-task" class="label-task"></label>
+          <input type="text" name="task" id="input-task" class="input-task" placeholder="Create a new todo..." />
         </form>
 
-        <ul id="tasks-list" class="tasks-list"></ul>
+        <div id="tasks" class="tasks"></div>
 
         <div class="tasks-footer">
           <span id="items-left">5 items left</span>
-          <span id="clear-completed" class="clear-completed">Clear Completed</span>
+          <span id="delete-completed" class="clear-completed">Clear Completed</span>
         </div>
 
         <div id="filters" class="filters">
